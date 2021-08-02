@@ -2,12 +2,13 @@ from django import forms
 from .models import Order
 
 
-class Orderform(forms.ModelForm):
-    model = Order
-    fields = ('full_name', 'email', 'phone_number',
-             'street_address1', 'street_address2',
-              'town_or_city', 'postcode', 'country',
-               'county',)
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ('full_name', 'email', 'phone_number',
+                  'street_address1', 'street_address2',
+                  'town_or_city', 'postcode', 'country',
+                  'county',)
 
     def __init__(self, *args, **kwargs):
         """
@@ -17,7 +18,7 @@ class Orderform(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'full_name': 'Full Name',
-            'email': 'Email',
+            'email': 'Email Address',
             'phone_number': 'Phone Number',
             'country': 'Country',
             'postcode': 'Postal Code',
